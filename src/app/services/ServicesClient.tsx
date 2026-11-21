@@ -6,108 +6,103 @@ import Image from 'next/image';
 import Navbar from '../components/navbar';
 import Footer from '../components/footer';
 import ScrollProgress from "../components/ScrollProgress";
+import { Check, ShieldCheck } from "lucide-react";
 
 const services = [
   {
+    id: 'consultancy',
     title: 'Clinical Supplies Consultancy & Project Management',
     description:
       'Strategic planning and end-to-end clinical supply execution for global trials.',
     image:
-      'https://images.unsplash.com/photo-1576086213369-97a306d36557?q=80&w=1600&auto=format&fit=crop',
+      '/images/seveillar-51.webp',
     details:
-      'Seveillar provides complete clinical supply consultancy and project management solutions including forecasting, sourcing strategy, inventory planning, vendor coordination, supply chain optimization, and operational execution for multinational clinical studies.',
+      'We develop clinical supplies management strategies for global studies, provide supply chain consultation, and design innovative blinding techniques.',
     points: [
-      'Global Clinical Trial Planning',
-      'Supply Forecasting',
-      'Vendor Coordination',
-      'Risk Mitigation',
-      'Inventory Planning',
-      'Project Lifecycle Management',
+      'Supply Chain Consultation',
+      'Clinical Supply Strategy',
+      'Risk Management',
+      'Study Start-up Support',
     ],
   },
   {
+    id: 'manufacturing',
     title: 'Clinical Supplies Manufacturing',
     description:
       'cGMP manufacturing support for placebo and active dosage forms.',
     image:
-      'https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1600&auto=format&fit=crop',
+      '/images/seveillar-53.webp',
     details:
-      'Our manufacturing capabilities support placebo manufacturing, over encapsulation, relabeling, and customized clinical dosage preparation under compliant and validated environments.',
+      'Clinical supplies manufacturing includes placebo and active dosage forms, over encapsulation, and strategic partnerships with third-party cGMP contract manufacturers.',
     points: [
       'Placebo Manufacturing',
+      'Active Dosage Forms',
       'Over Encapsulation',
-      'Clinical Batch Support',
-      'GMP Manufacturing',
-      'Protocol-Based Production',
-      'Regulatory Documentation',
+      'Third-Party cGMP Partnerships',
     ],
   },
   {
+    id: 'sourcing',
     title: 'Comparator & Ancillary Supplies Sourcing',
     description:
       'Global comparator sourcing with regulatory and cold-chain compliance.',
     image:
-      'https://images.unsplash.com/photo-1580281780460-82d277b0e3f8?q=80&w=1600&auto=format&fit=crop',
+      '/images/seveillar-67.webp',
     details:
-      'We provide global sourcing and procurement solutions for comparator drugs and ancillary supplies through validated sourcing networks.',
+      'We source comparator and ancillary supplies globally through approved wholesalers, with cold chain management, traceability, and supply chain documentation.',
     points: [
       'Comparator Drug Sourcing',
-      'Cold Chain Handling',
-      'Global Vendor Network',
-      'Supply Traceability',
-      'Import/Export Documentation',
-      'Ancillary Procurement',
+      'Approved Global Wholesalers',
+      'Cold Chain Management',
+      'Traceability & Documentation',
     ],
   },
   {
+    id: 'packaging',
     title: 'Blinding, Packaging & Labelling',
     description:
       'Protocol-specific packaging and multilingual labeling solutions.',
     image:
-      'https://images.unsplash.com/photo-1583912267550-d4bcddf8f7d3?q=80&w=1600&auto=format&fit=crop',
+      '/images/seveillar-54.webp',
     details:
-      'Seveillar provides customized blinding, packaging, and labeling solutions aligned with study protocols and regional compliance requirements.',
+      'Our teams provide primary packaging for non-potent oral solid dosage forms, protocol-specific blinded packs, and clinical supplies label design and generation.',
     points: [
-      'Primary Packaging',
-      'Secondary Packaging',
-      'Multilingual Labels',
-      'Booklet Labels',
-      'Blinded Packaging',
-      'Randomization Kits',
+      'Blinding Strategy Design',
+      'Primary & Secondary Packaging',
+      'Multi-language Labels',
+      'Protocol-Specific Solutions',
     ],
   },
   {
+    id: 'logistics',
     title: 'Storage, Distribution & Global Logistics',
     description:
       'Temperature-controlled storage and international clinical logistics.',
     image:
-      'https://images.unsplash.com/photo-1563013544-824ae1b704d3?q=80&w=1600&auto=format&fit=crop',
+      '/images/seveillar-84.webp',
     details:
-      'Our global logistics infrastructure supports GDP-compliant storage and international distribution of clinical trial materials.',
+      'Clinical supplies are stored and distributed at 15°C to 25°C, 2°C to 8°C, -15°C to -25°C, and -80°C through a global depot network and GDP-aligned processes.',
     points: [
-      'Cold Chain Logistics',
-      'Global Distribution',
-      'Depot Management',
-      'Temperature Monitoring',
-      'GDP Warehousing',
-      'International Shipments',
+      '15°C to 25°C and 2°C to 8°C Storage',
+      '-15°C to -25°C and -80°C Storage',
+      'Global Depot Network',
+      'cGMP, GDP and WHO Guidelines',
     ],
   },
   {
+    id: 'irt',
     title: 'IVRS / IWRS (IRT) Services',
     description:
       'Advanced IRT systems for randomization and supply management.',
     image:
-      'https://images.unsplash.com/photo-1579684385127-1ef15d508118?q=80&w=1600&auto=format&fit=crop',
+      '/images/seveillar-74.webp',
     details:
-      'Seveillar delivers customized Interactive Response Technology solutions supporting patient randomization and inventory management.',
+      'Our customized IRT platform supports global studies with a user-friendly, 21 CFR Part 11 compliant system, multilingual service, and 24/7 call support.',
     points: [
-      'Patient Randomization',
-      'Supply Tracking',
-      'IRT Platform Integration',
-      'Enrollment Tracking',
-      'Cohort Management',
-      '24×7 Technical Support',
+      'Customized IRT Platform',
+      '21 CFR Part 11 Compliant',
+      'Multilingual 24/7 Call Support',
+      'Randomization and Supply Management',
     ],
   },
 ];
@@ -146,7 +141,7 @@ export default function ServicesClient() {
   return (
     <>
       <Navbar />
-      <main className="bg-white overflow-hidden">
+      <main className="bg-white overflow-x-clip">
 
         {/* ================================================= */}
 {/* PREMIUM INTERNAL HERO SECTION */}
@@ -156,7 +151,7 @@ export default function ServicesClient() {
   {/* ORIGINAL BACKGROUND IMAGE */}
   <div className="absolute inset-0">
     <Image
-      src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=2200&auto=format&fit=crop"
+      src="/images/seveillar-48.webp"
       alt="Clinical Background"
       fill
       sizes="100vw"
@@ -205,7 +200,7 @@ export default function ServicesClient() {
       >
         <div className="relative w-[220px] md:w-[280px] aspect-[9/13] rounded-[34px] overflow-hidden border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
           <Image
-            src="https://images.unsplash.com/photo-1579165466741-7f35e4755660?q=80&w=1400&auto=format&fit=crop"
+            src="/images/seveillar-56.webp"
             alt="Clinical Research"
             fill
             sizes="(max-width: 768px) 50vw, 280px"
@@ -281,9 +276,7 @@ export default function ServicesClient() {
                   ].map((item, index) => (
                     <div key={index} className="flex items-center gap-3">
                       <div className="w-8 h-8 rounded-lg bg-[#E95A25]/10 flex items-center justify-center">
-                        <svg className="w-4 h-4 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                        </svg>
+                        <Check className="w-4 h-4 text-[#E95A25]" aria-hidden="true" />
                       </div>
                       <p className="text-[#28151B] font-medium">{item}</p>
                     </div>
@@ -318,11 +311,21 @@ export default function ServicesClient() {
               {services.map((service, index) => (
                 <motion.div
                   key={index}
+                  id={service.id}
                   initial={{ opacity: 0, y: 60 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.08 }}
                   onClick={() => setSelectedService(service)}
+                  onKeyDown={(event) => {
+                    if (event.key === 'Enter' || event.key === ' ') {
+                      event.preventDefault();
+                      setSelectedService(service);
+                    }
+                  }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Learn more about ${service.title}`}
                   className="group relative overflow-hidden rounded-[28px] bg-[#28151B] h-[620px] cursor-pointer"
                 >
                   {/* IMAGE - OPTIMIZED: reduced scale on hover */}
@@ -374,7 +377,7 @@ export default function ServicesClient() {
         <section className="relative py-22 md:py-24 overflow-hidden bg-[#2815B]">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2200&auto=format&fit=crop"
+              src="/images/seveillar-70.webp"
               alt="Clinical Workflow"
               fill
               sizes="100vw"
@@ -505,9 +508,7 @@ export default function ServicesClient() {
                   className="bg-white rounded-[32px] p-8 border border-[#FAD1C3]/40 shadow-lg hover:-translate-y-2 transition-all duration-500"
                 >
                   <div className="w-16 h-16 rounded-2xl bg-[#E95A25]/10 flex items-center justify-center mb-8">
-                    <svg className="w-8 h-8 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
+                    <ShieldCheck className="w-8 h-8 text-[#E95A25]" aria-hidden="true" />
                   </div>
                   <h3 className="text-2xl font-bold text-[#28151B] leading-tight">{item.title}</h3>
                   <p className="mt-5 text-[#5A3A3E] leading-relaxed text-[15px]">{item.text}</p>
@@ -523,7 +524,7 @@ export default function ServicesClient() {
         <section className="relative py-32 overflow-hidden">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2200&auto=format&fit=crop"
+              src="/images/seveillar-87.webp"
               alt=""
               fill
               sizes="100vw"
@@ -631,9 +632,7 @@ export default function ServicesClient() {
                           className="flex items-start gap-4 p-5 rounded-[18px] bg-[#FFF8F5] border border-[#FAD1C3]/40 hover:border-[#E95A25]/30 transition-all duration-300"
                         >
                           <div className="w-10 h-10 rounded-xl bg-[#E95A25]/10 flex items-center justify-center flex-shrink-0">
-                            <svg className="w-5 h-5 text-[#E95A25]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                            </svg>
+                            <Check className="w-5 h-5 text-[#E95A25]" aria-hidden="true" />
                           </div>
                           <p className="text-[#28151B] font-medium leading-relaxed">{point}</p>
                         </div>

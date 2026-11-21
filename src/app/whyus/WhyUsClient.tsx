@@ -1,8 +1,10 @@
 "use client";
 
 import { motion, Variants, useScroll, useTransform } from "framer-motion";
-import { useRef, useState } from "react";
+import { createElement, useRef, useState } from "react";
+import { ShieldCheck, Building2, Warehouse, Workflow, BadgeCheck, Zap, PanelsTopLeft, UsersRound, Globe2 } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import ScrollProgress from "../components/ScrollProgress";
@@ -52,88 +54,56 @@ const differentiators = [
     title: "QP Certified Facility for Europe",
     description:
       "Seveillar operates a Qualified Person (QP) certified facility, enabling full support for clinical trials across the European region with complete EU GMP compliance.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-      </svg>
-    ),
+    icon: ShieldCheck,
   },
   {
     letter: "B",
     title: "USFDA Audited Facility",
     description:
       "Our facility has been audited by USFDA, demonstrating our commitment to the highest quality standards, regulatory compliance, and operational excellence for global clinical trials.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-      </svg>
-    ),
+    icon: Building2,
   },
   {
     letter: "C",
     title: "One of the Largest Facilities",
     description:
       "Seveillar offers one of the largest facilities for Labelling, Packaging, and Storage of IMPs — engineered to handle complex, large-scale clinical trials with precision and efficiency.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
-      </svg>
-    ),
+    icon: Warehouse,
   },
   {
     letter: "D",
     title: "End-to-End Clinical Supply Solutions",
     description:
       "Comprehensive services spanning trial supply planning, IMP labelling & packaging, secondary packaging, storage, global distribution, and returns & reconciliation — all under one roof.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
-      </svg>
-    ),
+    icon: Workflow,
   },
   {
     letter: "E",
     title: "Quality & Compliance First",
     description:
       "Operations aligned with global regulatory standards including GMP, GDP, and GCP, ensuring quality, traceability, and full supply chain compliance on every study.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-      </svg>
-    ),
+    icon: BadgeCheck,
   },
   {
     letter: "F",
     title: "Scalable & Agile Operations",
     description:
       "Our infrastructure and experienced team enable management of small to large-scale trials across multiple regions with the speed and flexibility that modern clinical research demands.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
+    icon: Zap,
   },
   {
     letter: "G",
     title: "Technology-Driven Operations",
     description:
       "We leverage SAP ERP, in-house IRT platforms, and advanced digital monitoring solutions to ensure real-time inventory visibility, traceability, and seamless clinical supply management.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 3H5a2 2 0 00-2 2v4m6-6h10a2 2 0 012 2v4M9 3v18m0 0h10a2 2 0 002-2V9M9 21H5a2 2 0 01-2-2V9m0 0h18" />
-      </svg>
-    ),
+    icon: PanelsTopLeft,
   },
   {
     letter: "H",
     title: "Customer-Centric Approach",
     description:
       "We operate as an extension of your team, offering customized, responsive, and reliable support for every clinical trial — from protocol review through final reconciliation.",
-    icon: (
-      <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" />
-      </svg>
-    ),
+    icon: UsersRound,
   },
 ];
 
@@ -180,7 +150,7 @@ export default function WhyUsClient() {
   return (
     <>
       <Navbar />
-      <main className="bg-white overflow-hidden">
+      <main className="bg-white overflow-x-clip">
 
         {/* ============================================================ */}
 {/* HERO SECTION */}
@@ -190,7 +160,7 @@ export default function WhyUsClient() {
   {/* ORIGINAL BACKGROUND IMAGE */}
   <div className="absolute inset-0">
     <Image
-      src="https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?q=80&w=2400&auto=format&fit=crop"
+      src="/images/seveillar-50.webp"
       alt="Why Choose Seveillar"
       fill
       sizes="100vw"
@@ -239,9 +209,9 @@ export default function WhyUsClient() {
           className="flex flex-wrap gap-10 mt-10"
         >
           {[
-            ["300+", "GLOBAL STUDIES"],
+            ["600+", "GLOBAL STUDIES"],
             ["100+", "SPONSORS SERVED"],
-            ["25+", "COUNTRIES"],
+            ["1,200", "PALLET CAPACITY"],
           ].map((item, i) => (
             <div key={i}>
               <h3 className="text-3xl md:text-4xl font-bold text-[#E95A25] tracking-[-0.04em]">
@@ -266,7 +236,7 @@ export default function WhyUsClient() {
         {[
           { label: "USFDA Audited", sub: "Regulatory Excellence" },
           { label: "QP Certified", sub: "EU GMP Compliance" },
-          { label: "22,000 Sq. Ft", sub: "State-of-Art GMP Facility" },
+          { label: "35,000 Sq. Ft", sub: "GMP Facility" },
         ].map((item, i) => (
           <div
             key={i}
@@ -353,7 +323,7 @@ export default function WhyUsClient() {
                   {/* Icon */}
                   <div className={`relative z-10 mb-5 transition-colors duration-500
                     ${hoveredCard === index ? "text-[#E95A25]" : "text-[#4C292F]"}`}>
-                    {item.icon}
+                    {createElement(item.icon, { className: "w-6 h-6", strokeWidth: 2 })}
                   </div>
 
                   <h3 className={`relative z-10 text-xl font-bold leading-tight mb-4 transition-colors duration-500
@@ -376,7 +346,7 @@ export default function WhyUsClient() {
         <section className="relative py-28 overflow-hidden bg-[#28151B]">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1581093450021-4a7360e9a7f8?q=80&w=2400&auto=format&fit=crop"
+              src="/images/seveillar-70.webp"
               alt="Capabilities"
               fill
               sizes="100vw"
@@ -418,7 +388,7 @@ export default function WhyUsClient() {
                 {/* Image */}
                 <div className="relative mt-12 overflow-hidden rounded-[28px] h-[260px] border border-white/10">
                   <Image
-                    src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1800&auto=format&fit=crop"
+                    src="/images/seveillar-67.webp"
                     alt="Capabilities facility"
                     fill
                     sizes="(max-width: 1024px) 100vw, 40vw"
@@ -428,7 +398,7 @@ export default function WhyUsClient() {
                   <div className="absolute bottom-6 left-6 right-6">
                     <div className="w-10 h-[3px] bg-[#E95A25] rounded-full mb-3" />
                     <p className="text-white font-semibold leading-tight">
-                      22,000 Sq. Ft State-of-Art GMP Certified Facility
+                      35,000 Sq. Ft GMP Certified Facility
                     </p>
                   </div>
                 </div>
@@ -490,7 +460,7 @@ export default function WhyUsClient() {
                 </div>
                 <h2 className="text-5xl md:text-6xl font-bold text-[#28151B] leading-[0.95] tracking-[-0.04em]">
                   Comprehensive
-                  End-to-End
+                  End-to-End Clinical Trial
                   <span className="block text-[#E95A25]">Supply Services</span>
                 </h2>
                 <p className="mt-8 text-lg text-[#5A3A3E] leading-relaxed font-light">
@@ -529,7 +499,7 @@ export default function WhyUsClient() {
               >
                 <div className="relative overflow-hidden rounded-[34px] h-[520px] shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
                   <Image
-                    src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1800&auto=format&fit=crop"
+                    src="/images/seveillar-74.webp"
                     alt="Clinical Supply Operations"
                     fill
                     sizes="(max-width: 1024px) 100vw, 45vw"
@@ -540,13 +510,11 @@ export default function WhyUsClient() {
                 {/* Floating badge */}
                 <div className="absolute -bottom-10 -left-8 bg-[#28151B] rounded-[28px] p-7 w-[260px] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
                   <div className="w-12 h-12 rounded-2xl bg-[#E95A25] flex items-center justify-center mb-5">
-                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064" />
-                    </svg>
+                    <Globe2 className="w-6 h-6 text-white" aria-hidden="true" />
                   </div>
-                  <h3 className="text-3xl font-bold text-white">25+</h3>
+                  <h3 className="text-3xl font-bold text-white">600+</h3>
                   <p className="mt-2 text-white/60 text-sm leading-relaxed">
-                    Countries served across global clinical trial operations
+                    Clinical studies delivered across global regions
                   </p>
                 </div>
               </motion.div>
@@ -671,7 +639,7 @@ export default function WhyUsClient() {
                 },
                 {
                   title: "GMP Certified Facility",
-                  text: "22,000 sq. ft GMP certified facility with validated environmental monitoring and controlled operations.",
+                  text: "35,000 sq. ft GMP facility with validated environmental monitoring and controlled operations.",
                   accent: "#4C292F",
                 },
                 {
@@ -710,7 +678,7 @@ export default function WhyUsClient() {
         {/* ============================================================ */}
         <section className="relative overflow-hidden py-32">
           <Image
-            src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2400&auto=format&fit=crop"
+            src="/images/seveillar-77.webp"
             alt="Partner With Seveillar"
             fill
             sizes="100vw"
@@ -741,12 +709,12 @@ export default function WhyUsClient() {
                 infrastructure can accelerate your next global clinical trial.
               </p>
               <div className="flex flex-wrap justify-center gap-5 mt-12">
-                <button className="bg-[#E95A25] hover:bg-[#4C292F] text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-[0_20px_60px_rgba(233,90,37,0.25)] hover:shadow-[0_20px_60px_rgba(233,90,37,0.4)]">
+                <Link href="/contact" className="bg-[#E95A25] hover:bg-[#4C292F] text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-[0_20px_60px_rgba(233,90,37,0.25)] hover:shadow-[0_20px_60px_rgba(233,90,37,0.4)]">
                   Contact Our Team
-                </button>
-                <button className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300">
+                </Link>
+                <Link href="/services" className="bg-white/10 backdrop-blur-xl border border-white/20 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300">
                   Explore Our Services
-                </button>
+                </Link>
               </div>
             </motion.div>
           </div>

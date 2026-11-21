@@ -7,6 +7,7 @@ import {
   ArrowRight,
 } from "lucide-react";
 import { motion, Variants } from "framer-motion";
+import type { FormEvent } from "react";
 
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
@@ -72,6 +73,22 @@ const itemVariants: Variants = {
 };
 
 export default function ContactClient() {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>) => {
+    event.preventDefault();
+    const data = new FormData(event.currentTarget);
+    const message = [
+      "New Seveillar contact form enquiry",
+      "",
+      `Full Name: ${String(data.get("name") || "").trim()}`,
+      `Email Address: ${String(data.get("email") || "").trim()}`,
+      `Phone Number: ${String(data.get("phone") || "").trim() || "Not provided"}`,
+      `Subject: ${String(data.get("subject") || "").trim()}`,
+      "",
+      "Message:",
+      String(data.get("message") || "").trim(),
+    ].join("\n");
+    window.location.href = `https://wa.me/919923129073?text=${encodeURIComponent(message)}`;
+  };
   return (
     <>
       <Navbar />
@@ -86,7 +103,7 @@ export default function ContactClient() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1974&auto=format&fit=crop')",
+                "url('/images/seveillar-92.webp')",
             }}
             initial={{ opacity: 0.8 }}
             animate={{ opacity: 1 }}
@@ -181,12 +198,10 @@ export default function ContactClient() {
                       Phone Number
                     </h3>
 
-                    <a
-                      href="tel:02138664021"
-                      className="mt-2 inline-block text-[#5A3A3E] hover:text-[#E95A25] transition-colors"
-                    >
-                      02138 664021
-                    </a>
+                    <div className="mt-2 flex flex-col gap-1">
+                      <a href="tel:+919923129073" className="text-[#5A3A3E] hover:text-[#E95A25]">+91 99231 29073</a>
+                      <a href="tel:+919657527925" className="text-[#5A3A3E] hover:text-[#E95A25]">+91 96575 27925</a>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -201,12 +216,10 @@ export default function ContactClient() {
                       Email Address
                     </h3>
 
-                    <a
-                      href="mailto:enquiry@seveillar.com"
-                      className="mt-2 inline-block text-[#5A3A3E] hover:text-[#E95A25] transition-colors"
-                    >
-                      enquiry@seveillar.com
-                    </a>
+                    <div className="mt-2 flex flex-col gap-1 break-all">
+                      <a href="mailto:somnath.sakore@seveillar.com" className="text-[#5A3A3E] hover:text-[#E95A25]">somnath.sakore@seveillar.com</a>
+                      <a href="mailto:malharee.sutar@seveillar.com" className="text-[#5A3A3E] hover:text-[#E95A25]">malharee.sutar@seveillar.com</a>
+                    </div>
                   </div>
                 </motion.div>
 
@@ -261,7 +274,7 @@ export default function ContactClient() {
                 </h3>
               </div>
 
-              <form className="mt-10 space-y-6" action="/api/contact" method="POST">
+              <form className="mt-10 space-y-6" onSubmit={handleSubmit}>
                 {/* Name */}
                 <div>
                   <label htmlFor="name" className="block mb-2 text-sm font-medium text-[#4C292F]">
@@ -273,7 +286,7 @@ export default function ContactClient() {
                     name="name"
                     type="text"
                     placeholder="Enter your name"
-                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white outline-none focus:border-[#E95A25] transition-all"
+                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white text-black outline-none focus:border-[#E95A25] transition-all"
                     required
                   />
                 </div>
@@ -289,7 +302,7 @@ export default function ContactClient() {
                     name="email"
                     type="email"
                     placeholder="Enter your email"
-                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white outline-none focus:border-[#E95A25] transition-all"
+                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white text-black outline-none focus:border-[#E95A25] transition-all"
                     required
                   />
                 </div>
@@ -305,7 +318,7 @@ export default function ContactClient() {
                     name="phone"
                     type="tel"
                     placeholder="Enter your phone number"
-                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white outline-none focus:border-[#E95A25] transition-all"
+                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white text-black outline-none focus:border-[#E95A25] transition-all"
                   />
                 </div>
 
@@ -320,7 +333,7 @@ export default function ContactClient() {
                     name="subject"
                     type="text"
                     placeholder="Enter subject"
-                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white outline-none focus:border-[#E95A25] transition-all"
+                    className="w-full h-14 px-5 rounded-2xl border border-[#FAD1C3]/50 bg-white text-black outline-none focus:border-[#E95A25] transition-all"
                     required
                   />
                 </div>
@@ -336,7 +349,7 @@ export default function ContactClient() {
                     name="message"
                     rows={6}
                     placeholder="Write your message..."
-                    className="w-full px-5 py-4 rounded-2xl border border-[#FAD1C3]/50 bg-white outline-none resize-none focus:border-[#E95A25] transition-all"
+                    className="w-full px-5 py-4 rounded-2xl border border-[#FAD1C3]/50 bg-white text-black outline-none resize-none focus:border-[#E95A25] transition-all"
                     required
                   />
                 </div>
@@ -346,7 +359,7 @@ export default function ContactClient() {
                   type="submit"
                   className="w-full h-14 rounded-2xl bg-[#E95A25] hover:bg-[#4C292F] text-white font-semibold transition-all duration-300 flex items-center justify-center gap-3 cursor-pointer"
                 >
-                  Send Message
+                  Send via WhatsApp
                   <ArrowRight className="h-5 w-5" />
                 </button>
               </form>
