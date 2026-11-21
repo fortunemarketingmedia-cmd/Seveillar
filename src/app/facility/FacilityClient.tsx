@@ -2,9 +2,11 @@
 
 import { motion, Variants } from "framer-motion";
 import Image from "next/image";
+import Link from "next/link";
 import Navbar from "../components/navbar";
 import Footer from "../components/footer";
 import ScrollProgress from "../components/ScrollProgress";
+import { Activity, ThermometerSnowflake, PackageCheck } from "lucide-react";
 
 // Animation variants (memoized outside component)
 const fadeInUp: Variants = {
@@ -46,7 +48,7 @@ export default function FacilityClient() {
   return (
     <>
       <Navbar />
-      <main className="bg-white overflow-hidden">
+      <main className="bg-white overflow-x-clip">
 
         {/* ================================================= */}
 {/* FACILITY HERO SECTION */}
@@ -56,13 +58,14 @@ export default function FacilityClient() {
   {/* ORIGINAL BACKGROUND IMAGE */}
   <div className="absolute inset-0">
     <Image
-      src="https://images.unsplash.com/photo-1516549655169-df83a0774514?q=80&w=2400&auto=format&fit=crop"
+      src="/images/seveillar-86.webp"
       alt="Facility Background"
       fill
       sizes="100vw"
       className="object-cover"
       priority
     />
+    <div className="absolute inset-0 bg-[#28151B]/65" />
   </div>
 
   {/* CONTENT */}
@@ -103,7 +106,7 @@ export default function FacilityClient() {
           className="flex flex-wrap gap-10 mt-10"
         >
           {[
-            ['22000', 'SQ. FT FACILITY'],
+            ['35,000', 'SQ. FT FACILITY'],
             ['1200+', 'PALLET CAPACITY'],
             ['24/7', 'MONITORING'],
           ].map((item, index) => (
@@ -128,12 +131,13 @@ export default function FacilityClient() {
       >
         <div className="relative overflow-hidden rounded-[34px] w-full max-w-[720px] h-[360px] border border-white/20 shadow-[0_30px_80px_rgba(0,0,0,0.25)]">
           <Image
-            src="https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=2000&auto=format&fit=crop"
+            src="/images/seveillar-77.webp"
             alt="Clinical Facility"
             fill
             sizes="(max-width: 768px) 100vw, 50vw"
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-gradient-to-t from-[#28151B]/90 via-[#28151B]/45 to-transparent" />
 
           <div className="relative z-10 h-full flex flex-col justify-end p-8">
             <div className="w-14 h-[3px] bg-[#E95A25] rounded-full mb-5" />
@@ -170,7 +174,7 @@ export default function FacilityClient() {
               >
                 <div className="relative overflow-hidden rounded-[34px] h-[560px] shadow-[0_30px_80px_rgba(0,0,0,0.12)]">
                   <Image
-                    src="https://images.unsplash.com/photo-1581092335397-9583eb92d232?q=80&w=1800&auto=format&fit=crop"
+                    src="/images/seveillar-78.webp"
                     alt="Clinical Facility"
                     fill
                     sizes="(max-width: 768px) 100vw, 50vw"
@@ -179,9 +183,7 @@ export default function FacilityClient() {
                 </div>
                 <div className="absolute -bottom-10 -right-8 md:right-[-40px] bg-[#4C292F] rounded-[30px] p-8 w-[280px] border border-white/10 shadow-[0_20px_60px_rgba(0,0,0,0.25)]">
                   <div className="w-14 h-14 rounded-2xl bg-[#E95A25] flex items-center justify-center mb-6">
-                    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 7h18M3 12h18M3 17h18" />
-                    </svg>
+                    <Activity className="w-7 h-7 text-white" aria-hidden="true" />
                   </div>
                   <h3 className="text-4xl font-bold text-white">24/7</h3>
                   <p className="mt-3 text-white/65 leading-relaxed">
@@ -225,7 +227,7 @@ export default function FacilityClient() {
 
                 <div className="grid grid-cols-2 gap-6 mt-12">
                   {[
-                    ['22000', 'Sq. Ft Infrastructure'],
+                    ['35,000', 'Sq. Ft Infrastructure'],
                     ['1200+', 'Pallet Storage'],
                     ['5-Star', 'Industrial Zone'],
                     ['GDP/GMP', 'Operational Compliance'],
@@ -251,7 +253,7 @@ export default function FacilityClient() {
         <section className="relative py-28 overflow-hidden bg-[#28151B]">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=2200&auto=format&fit=crop"
+              src="/images/seveillar-84.webp"
               alt="Cold Chain Infrastructure"
               fill
               sizes="100vw"
@@ -289,7 +291,7 @@ export default function FacilityClient() {
                 className="relative overflow-hidden rounded-[36px] border border-white/10 min-h-[540px]"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1581092335878-2d9ff86ca2bf?q=80&w=2000&auto=format&fit=crop"
+                  src="/images/seveillar-80.webp"
                   alt="Cold Storage"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -299,9 +301,7 @@ export default function FacilityClient() {
                 <div className="relative z-10 h-full flex flex-col justify-between p-10">
                   <div className="flex items-start justify-between">
                     <div className="w-16 h-16 rounded-2xl bg-[#E95A25] flex items-center justify-center shadow-[0_20px_60px_rgba(233,90,37,0.3)]">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 3v18m0 0l4-4m-4 4l-4-4" />
-                      </svg>
+                      <ThermometerSnowflake className="w-8 h-8 text-white" aria-hidden="true" />
                     </div>
                     <div className="bg-white/10 backdrop-blur-xl border border-white/10 rounded-2xl px-5 py-3">
                       <span className="text-white text-sm uppercase tracking-[0.2em]">VALIDATED STORAGE</span>
@@ -323,17 +323,17 @@ export default function FacilityClient() {
                   {
                     title: '2°C to 8°C Storage',
                     desc: 'Controlled cold-room environments for sensitive clinical products.',
-                    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1400&auto=format&fit=crop',
+                    image: '/images/seveillar-83.webp',
                   },
                   {
                     title: '-20°C Freezer Systems',
                     desc: 'Deep freezer storage with backup systems and monitoring.',
-                    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1400&auto=format&fit=crop',
+                    image: '/images/seveillar-77.webp',
                   },
                   {
-                    title: '24/7 Monitoring',
+                    title: 'Real-Time Environmental Monitoring',
                     desc: 'Continuous environmental monitoring and alarm systems.',
-                    image: 'https://images.unsplash.com/photo-1581092921461-eab62e97a780?q=80&w=1400&auto=format&fit=crop',
+                    image: '/images/seveillar-53.webp',
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -361,28 +361,6 @@ export default function FacilityClient() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-6 mt-16">
-              {[
-                'Validated Temperature Mapping',
-                'Backup Power Infrastructure',
-                'Online Monitoring Systems',
-                'GDP/GMP Compliant Storage',
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="rounded-2xl bg-white/5 border border-white/10 px-6 py-5 backdrop-blur-xl"
-                >
-                  <div className="flex items-center gap-4">
-                    <div className="w-3 h-3 rounded-full bg-[#E95A25]" />
-                    <p className="text-white font-medium leading-relaxed">{item}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -406,7 +384,7 @@ export default function FacilityClient() {
                 <span className="block text-[#4C292F]">Labeling Operations</span>
               </h2>
               <p className="mt-8 text-lg md:text-xl text-[#5A3A3E] leading-relaxed font-light max-w-3xl">
-                Dedicated packaging and labeling infrastructure engineered for multinational clinical studies,
+                Dedicated packaging and labeling infrastructure engineered for global clinical studies,
                 supporting booklet labeling, blister packaging, bottle packaging, kitting, and protocol-driven operational execution.
               </p>
             </div>
@@ -421,7 +399,7 @@ export default function FacilityClient() {
                 className="relative overflow-hidden rounded-[36px] min-h-[620px]"
               >
                 <Image
-                  src="https://images.unsplash.com/photo-1581093450021-4a7360e9a7f8?q=80&w=2200&auto=format&fit=crop"
+                  src="/images/seveillar-55.webp"
                   alt="Packaging Facility"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -434,9 +412,7 @@ export default function FacilityClient() {
                       <span className="text-white uppercase tracking-[0.2em] text-xs">ISO CLASSIFIED SUITES</span>
                     </div>
                     <div className="w-16 h-16 rounded-2xl bg-[#E95A25] flex items-center justify-center shadow-[0_20px_60px_rgba(233,90,37,0.3)]">
-                      <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12h6m-3-3v6" />
-                      </svg>
+                      <PackageCheck className="w-8 h-8 text-white" aria-hidden="true" />
                     </div>
                   </div>
                   <div>
@@ -455,17 +431,17 @@ export default function FacilityClient() {
                   {
                     title: 'Booklet Labeling',
                     desc: 'Multilingual booklet label generation and application.',
-                    image: 'https://images.unsplash.com/photo-1581092580497-e0d23cbdf1dc?q=80&w=1400&auto=format&fit=crop',
+                    image: '/images/seveillar-77.webp',
                   },
                   {
                     title: 'Blister Packaging',
                     desc: 'Clinical blister packaging with validated workflows.',
-                    image: 'https://images.unsplash.com/photo-1581092919535-7146ff1a5905?q=80&w=1400&auto=format&fit=crop',
+                    image: '/images/seveillar-54.webp',
                   },
                   {
                     title: 'Bottle Packaging',
                     desc: 'Automated bottle packaging and secondary packaging systems.',
-                    image: 'https://images.unsplash.com/photo-1582719471384-894fbb16e074?q=80&w=1400&auto=format&fit=crop',
+                    image: '/images/seveillar-83.webp',
                   },
                 ].map((item, index) => (
                   <motion.div
@@ -493,29 +469,6 @@ export default function FacilityClient() {
               </div>
             </div>
 
-            <div className="grid md:grid-cols-4 gap-6 mt-16">
-              {[
-                'ISO Class 7 Suites',
-                'ISO Class 8 Suites',
-                'Dedicated HVAC Systems',
-                'Validated Packaging Processes',
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, y: 30 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.08 }}
-                  className="relative overflow-hidden rounded-2xl border border-[#FAD1C3]/50 bg-white px-6 py-5"
-                >
-                  <div className="absolute top-0 right-0 w-20 h-20 rounded-full bg-[#E95A25]/5 blur-[50px]" />
-                  <div className="relative z-10 flex items-center gap-4">
-                    <div className="w-3 h-3 rounded-full bg-[#E95A25]" />
-                    <p className="text-[#28151B] font-medium leading-relaxed">{item}</p>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -526,7 +479,7 @@ export default function FacilityClient() {
         <section className="relative py-28 overflow-hidden bg-[#4C292F]">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=2400&auto=format&fit=crop"
+              src="/images/seveillar-74.webp"
               alt="Global Logistics"
               fill
               sizes="100vw"
@@ -549,49 +502,28 @@ export default function FacilityClient() {
                 <span className="block text-[#E95A25]">Depot Operations</span>
               </h2>
               <p className="mt-8 text-lg md:text-xl text-white/70 leading-relaxed font-light max-w-3xl mx-auto">
-                Integrated global depot and logistics networks supporting multinational clinical trial supply
+                Integrated global depot and logistics networks supporting global clinical trial supply
                 operations with efficient regional distribution, storage coordination, and uninterrupted supply continuity.
               </p>
             </div>
 
-            <div className="relative mt-20 overflow-hidden rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl min-h-[650px]">
-              <Image
-                src="https://images.unsplash.com/photo-1524661135-423995f22d0b?q=80&w=2400&auto=format&fit=crop"
-                alt="Global Map"
-                fill
-                sizes="100vw"
-                className="object-cover opacity-20"
+            <div className="relative mt-20 overflow-hidden rounded-[40px] border border-white/10 bg-white/5 backdrop-blur-xl">
+              <div className="bg-[#28151B] p-5 text-white">
+                <p className="font-semibold">Seveillar headquarters · Ranjangaon MIDC, Pune</p>
+                <p className="mt-1 text-sm text-white/70">Clinical studies supported across the US, Europe, Africa and Asia Pacific.</p>
+              </div>
+              <iframe
+                title="Map of Seveillar headquarters in Ranjangaon MIDC, Pune"
+                src="https://www.google.com/maps?q=Seveillar%20Clinical%20Supplies%20Services%20Pvt%20Ltd%20Ranjangaon%20MIDC%20Pune&output=embed"
+                loading="lazy"
+                className="pointer-events-none h-[400px] w-full border-0"
               />
-              <div className="absolute inset-0 bg-gradient-to-b from-[#4C292F]/80 via-[#4C292F]/65 to-[#4C292F]/90" />
+              <a href="https://www.google.com/maps/search/?api=1&query=Seveillar+Clinical+Supplies+Services+Ranjangaon+MIDC+Pune" target="_blank" rel="noopener noreferrer" className="block px-6 py-4 text-sm font-semibold text-[#F1D5C8] hover:text-white">Open interactive map and directions ↗</a>
 
-              {/* GLOW NODES */}
-              {[
-                { top: '24%', left: '22%', city: 'North America' },
-                { top: '38%', left: '48%', city: 'Europe' },
-                { top: '52%', left: '67%', city: 'Asia Pacific' },
-                { top: '68%', left: '52%', city: 'Middle East' },
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, scale: 0.5 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="absolute"
-                  style={{ top: item.top, left: item.left }}
-                >
-                  <div className="absolute inset-0 w-5 h-5 rounded-full bg-[#E95A25]/40 animate-ping" />
-                  <div className="relative w-5 h-5 rounded-full bg-[#E95A25] shadow-[0_0_25px_rgba(233,90,37,0.8)]" />
-                  <div className="mt-4 whitespace-nowrap">
-                    <p className="text-white text-sm font-medium tracking-wide">{item.city}</p>
-                  </div>
-                </motion.div>
-              ))}
-
-              <div className="absolute bottom-10 left-10 right-10 grid md:grid-cols-3 gap-6">
+              <div className="grid md:grid-cols-3 gap-6 p-6">
                 {[
                   { title: 'Regional Depot Network', desc: 'Integrated regional distribution support across global clinical trial operations.' },
-                  { title: 'Global Distribution', desc: 'Efficient logistics coordination for multinational clinical study requirements.' },
+                  { title: 'Global Distribution', desc: 'Efficient logistics coordination for global clinical study requirements.' },
                   { title: 'Supply Continuity', desc: 'Optimized inventory movement and uninterrupted clinical material availability.' },
                 ].map((item, index) => (
                   <motion.div
@@ -622,7 +554,7 @@ export default function FacilityClient() {
         <section className="relative py-28 overflow-hidden bg-[#FFF8F5]">
           <div className="absolute inset-0">
             <Image
-              src="https://images.unsplash.com/photo-1581092335878-2d9ff86ca2bf?q=80&w=2400&auto=format&fit=crop"
+              src="/images/seveillar-70.webp"
               alt="Compliance Systems"
               fill
               sizes="100vw"
@@ -727,7 +659,7 @@ export default function FacilityClient() {
             <div className="grid lg:grid-cols-[1fr_0.9fr] gap-10 mt-20">
               <div className="relative overflow-hidden rounded-[36px] bg-[#4C292F] p-10">
                 <Image
-                  src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=2000&auto=format&fit=crop"
+                  src="/images/seveillar-72.webp"
                   alt="Technology"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -780,7 +712,7 @@ export default function FacilityClient() {
         {/* ================================================= */}
         <section className="relative overflow-hidden py-32">
           <Image
-            src="https://images.unsplash.com/photo-1581093458791-9f3c3900df4b?q=80&w=2400&auto=format&fit=crop"
+            src="/images/seveillar-85.webp"
             alt="Facility CTA"
             fill
             sizes="100vw"
@@ -804,12 +736,12 @@ export default function FacilityClient() {
               clinical supply infrastructure supporting multinational studies.
             </p>
             <div className="flex flex-wrap justify-center gap-5 mt-12">
-              <button className="bg-[#E95A25] hover:bg-[#4C292F] text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-[0_20px_60px_rgba(233,90,37,0.25)]">
+              <Link href="/contact" className="bg-[#E95A25] hover:bg-[#4C292F] text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300 shadow-[0_20px_60px_rgba(233,90,37,0.25)]">
                 Contact Our Team
-              </button>
-              <button className="bg-white/10 backdrop-blur-xl border border-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300">
+              </Link>
+              <Link href="/services" className="bg-white/10 backdrop-blur-xl border border-white/10 hover:bg-white/20 text-white px-8 py-4 rounded-2xl font-semibold transition-all duration-300">
                 Explore Services
-              </button>
+              </Link>
             </div>
           </div>
         </section>

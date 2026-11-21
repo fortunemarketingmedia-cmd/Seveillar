@@ -1,11 +1,13 @@
 "use client";
 
-import { useEffect, useRef, useState } from 'react';
+import { createElement, useEffect, useRef, useState } from 'react';
+import { ClipboardList, Pill, PackageSearch, PackageCheck, Warehouse, MonitorCog, MapPin } from 'lucide-react';
 import Image from 'next/image';
 import Navbar from './components/navbar';
 import Footer from './components/footer';
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import ScrollProgress from "./components/ScrollProgress";
+import Link from 'next/link';
 
 // Animation variants - SAME as Facility/Why Us pages
 const fadeInUp: Variants = {
@@ -66,108 +68,111 @@ export default function HomeClient() {
     {
       title: "Global Clinical Supply Management",
       subtitle: "Supporting Clinical Trials Worldwide",
-      video: "/videos/clinical-supply-bg.mp4",
-      fallbackBg: "https://images.unsplash.com/photo-1581091226033-d5c48150dbaa?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      fallbackBg: "/images/seveillar-48.webp",
     },
     {
       title: "Precision. Compliance. Reliability.",
       subtitle: "End-to-End Clinical Supply Solutions",
-      video: "/videos/precision-bg.mp4",
-      fallbackBg: "https://images.unsplash.com/photo-1581093588401-fbb62a02f120?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      fallbackBg: "/images/seveillar-77.webp",
     },
     {
       title: "Trusted Global Clinical Trial Partner",
       subtitle: "Efficient Distribution Across Global Regions",
-      video: "/videos/global-trial-bg.mp4",
-      fallbackBg: "https://images.unsplash.com/photo-1581092335873-4b5b7d7e8f9f?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80",
+      fallbackBg: "/images/seveillar-70.webp",
     },
   ];
 
   const floatingStats = [
-    { number: "2015", label: "Founded" },
-    { number: "50+", label: "Global Trials" },
-    { number: "25+", label: "Countries" },
-    { number: "100%", label: "Compliance Focus" },
+    { number: "600+", label: "Global Studies Delivered" },
+    { number: "100+", label: "Years of Combined Experience" },
+    { number: "1,200", label: "Pallet Storage Capacity" },
+    { number: "24/7", label: "Facility Surveillance" },
   ];
 
   const services = [
     {
       title: "Clinical Supplies Consultancy & Project Management",
+      href: "/services#consultancy",
       desc: "Strategic planning and end-to-end project management solutions for efficient global clinical supply execution.",
       points: ["Supply Chain Consultation", "Clinical Supply Strategy", "Risk Management", "Study Start-up Support"],
-      icon: "M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
+      icon: ClipboardList
     },
     {
       title: "Clinical Supplies Manufacturing",
+      href: "/services#manufacturing",
       desc: "Manufacturing solutions for placebo and active dosage forms supported by qualified cGMP facilities.",
       points: ["Placebo Manufacturing", "Active Dosage Forms", "Over Encapsulation", "Third-Party cGMP Partnerships"],
-      icon: "M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+      icon: Pill
     },
     {
       title: "Comparator & Ancillary Supplies Sourcing",
+      href: "/services#sourcing",
       desc: "Global sourcing capabilities ensuring compliant procurement and supply continuity for clinical trials.",
       points: ["Comparator Drug Sourcing", "Approved Global Wholesalers", "Cold Chain Management", "Traceability & Documentation"],
-      icon: "M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-1.5 6M17 13l1.5 6M7 19h10M9 13v6M15 13v6"
+      icon: PackageSearch
     },
     {
       title: "Clinical Supplies Blinding, Packaging & Labeling",
+      href: "/services#packaging",
       desc: "Customized packaging and labeling solutions maintaining protocol compliance and study blinding integrity.",
       points: ["Blinding Strategy Design", "Primary & Secondary Packaging", "Multi-language Labels", "Protocol-Specific Solutions"],
-      icon: "M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"
+      icon: PackageCheck
     },
     {
       title: "Storage, Distribution & Global Logistics Management",
+      href: "/services#logistics",
       desc: "Temperature-controlled storage and global logistics management ensuring secure clinical supply distribution.",
-      points: ["15°C–25°C Storage", "Cold Chain Distribution", "Global Depot Network", "GDP/cGMP Compliance"],
-      icon: "M5 13l4 4L19 7"
+      points: ["15°C to 25°C and 2°C to 8°C Storage", "-15°C to -25°C and -80°C Storage", "Global Depot Network", "cGMP, GDP and WHO Guidelines"],
+      icon: Warehouse
     },
     {
       title: "IVRS / IWRS (IRT) Services",
+      href: "/services#irt",
       desc: "Customized interactive response technology solutions for efficient patient randomization and supply tracking.",
-      points: ["Patient Randomization", "Site Resupply", "Enrollment Tracking", "24×7 Global Support"],
-      icon: "M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
+      points: ["Customized IRT Platform", "21 CFR Part 11 Compliant", "Multilingual 24/7 Call Support", "Randomization and Supply Management"],
+      icon: MonitorCog
     },
   ];
 
   const certifications = [
-    "USFDA Audited", "QP Certified", "ISO 9001:2015", "GDP Compliant"
+    "USFDA Audited", "QP Certified", "GDP Compliant"
   ];
 
   const timelineData = [
     {
-      year: "2015",
-      title: "Company Founded",
-      short: "Seveillar established its foundation in clinical trial supply management.",
-      full: "Founded in 2015, Seveillar Clinical Supplies Services began operations focused on global clinical supply chain management, comparator sourcing, packaging, labeling, and logistics support.",
-      image: "https://images.unsplash.com/photo-1581092918484-8313b87f4d2d?q=80&w=1200&auto=format&fit=crop",
+      year: "01",
+      title: "Supply Strategy",
+      short: "Plan clinical supplies for global study requirements.",
+      full: "Our team develops a clinical supplies management strategy, including supply chain consultation and innovative blinding design.",
+      image: "/images/seveillar-70.webp",
     },
     {
-      year: "2017",
-      title: "Global Sourcing Expansion",
-      short: "Expanded comparator sourcing and global wholesaler partnerships.",
-      full: "Established a strong global network of approved wholesalers and distributors to support multinational clinical studies efficiently.",
-      image: "https://images.unsplash.com/photo-1566576912321-d58ddd7a6088?q=80&w=1200&auto=format&fit=crop",
+      year: "02",
+      title: "Comparator Sourcing",
+      short: "Source comparators through approved global wholesalers.",
+      full: "Global sourcing includes cold chain management, traceability, and supply chain documentation for clinical studies.",
+      image: "/images/seveillar-67.webp",
     },
     {
-      year: "2019",
-      title: "Cold Chain Infrastructure",
-      short: "Expanded temperature-controlled storage and logistics systems.",
-      full: "Developed advanced infrastructure supporting 15°C to 25°C, 2°C to 8°C, -20°C and -80°C storage and global distribution operations.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?q=80&w=1200&auto=format&fit=crop",
+      year: "03",
+      title: "Packaging & Labeling",
+      short: "Prepare protocol-specific blinded packs and labels.",
+      full: "Our packaging suites support non-potent oral solid dosage forms, blinded packs, and clinical supplies label design.",
+      image: "/images/seveillar-84.webp",
     },
     {
-      year: "2021",
-      title: "Global Clinical Trial Support",
-      short: "Successfully supported multi-country global clinical studies.",
-      full: "Expanded operational capabilities to manage packaging, labeling, storage, logistics, depot management, and global supply chain execution.",
-      image: "https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=1200&auto=format&fit=crop",
+      year: "04",
+      title: "Storage & Distribution",
+      short: "Manage temperature-controlled storage and global logistics.",
+      full: "Our storage ranges include 15°C to 25°C, 2°C to 8°C, -15°C to -25°C, and -80°C, supported by global depots.",
+      image: "/images/seveillar-78.webp",
     },
     {
-      year: "2023",
-      title: "Advanced IRT Solutions",
-      short: "Implemented scalable IVRS/IWRS clinical trial systems.",
-      full: "Introduced advanced 21 CFR Part 11 compliant IRT platforms supporting randomization, drug supply management, cohort tracking, and study workflows.",
-      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop",
+      year: "05",
+      title: "IRT Support",
+      short: "Coordinate randomization and supply through an IRT platform.",
+      full: "The customized IRT platform supports global clinical studies with 21 CFR Part 11 compliance and multilingual 24/7 call support.",
+      image: "/images/seveillar-74.webp",
     },
   ];
 
@@ -212,7 +217,7 @@ export default function HomeClient() {
   return (
     <>
       <Navbar />
-      <main className="overflow-hidden bg-white">
+      <main className="overflow-x-clip bg-white">
         
         {/* Hero Section - WITH CINEMATIC ANIMATIONS */}
         {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
@@ -224,16 +229,7 @@ export default function HomeClient() {
                 currentSlide === index ? 'opacity-100' : 'opacity-0'
               }`}
             >
-              <video
-                autoPlay
-                muted
-                loop
-                playsInline
-                className="absolute inset-0 w-full h-full object-cover"
-                poster={slide.fallbackBg}
-              >
-                <source src={slide.video} type="video/mp4" />
-              </video>
+              <div className="absolute inset-0 bg-cover bg-center" style={{ backgroundImage: `url(${slide.fallbackBg})` }} />
               <div className="absolute inset-0 bg-gradient-to-br from-black/70 via-black/50 to-[#E95A25]/30"></div>
               
               <div className="relative z-10 flex h-full items-center justify-between px-6 md:px-20 max-w-7xl mx-auto">
@@ -276,31 +272,15 @@ export default function HomeClient() {
                     className="flex flex-wrap gap-4"
                   >
                     {/* Accent color #E95A25 for buttons */}
-                    <button className="bg-[#E95A25] hover:bg-[#4C292F] text-white px-8 py-3 rounded-md font-semibold shadow-lg transition-all duration-300">
+                    <Link href="/services" className="bg-[#E95A25] hover:bg-[#4C292F] text-white px-8 py-3 rounded-md font-semibold shadow-lg transition-all duration-300">
                       Explore Services
-                    </button>
-                    <button className="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-8 py-3 rounded-md font-semibold transition-all duration-300">
+                    </Link>
+                    <Link href="/contact" className="bg-white/10 backdrop-blur-md border border-white/30 hover:bg-white/20 text-white px-8 py-3 rounded-md font-semibold transition-all duration-300">
                       Contact Us
-                    </button>
+                    </Link>
                   </motion.div>
                 </motion.div>
                 
-                <motion.div 
-                  initial={{ opacity: 0, x: 40 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
-                  className="hidden lg:block w-80"
-                >
-                  <div className="bg-white/10 backdrop-blur-xl rounded-2xl p-6 border border-white/30 shadow-2xl">
-                    <div className="text-center text-white">
-                      <div className="text-5xl font-bold text-[#E95A25]">20+</div>
-                      <div className="text-sm uppercase tracking-wider mt-1">Years Combined Experience</div>
-                      <hr className="my-3 border-white/20" />
-                      <div className="text-5xl font-bold text-[#E95A25]">24/7</div>
-                      <div className="text-sm uppercase tracking-wider mt-1">Global Support</div>
-                    </div>
-                  </div>
-                </motion.div>
               </div>
             </div>
           ))}
@@ -380,9 +360,6 @@ export default function HomeClient() {
               variants={fadeInUp}
               className="mb-14 md:mb-16 text-center lg:text-left"
             >
-              <div className="inline-block mb-6">
-                <span className="text-xs font-mono tracking-wider text-[#E95A25] bg-[#E95A25]/5 px-3 py-1 rounded-full">MANIFESTO</span>
-              </div>
               <h2 className="text-5xl md:text-6xl lg:text-7xl font-light tracking-tight text-[#28151B] leading-[1.1] max-w-4xl">
                 Built for Global
                 <br />
@@ -407,44 +384,25 @@ export default function HomeClient() {
                     Seveillar Clinical Supplies Services Pvt. Ltd. is a specialized clinical trial supplies management company providing end-to-end solutions for pharmaceutical, biotechnology, and CRO organizations globally.
                   </p>
                   <p className="text-[#28151B] text-lg leading-relaxed font-light">
-                    Established in 2015, Seveillar delivers compliant, reliable, and efficient clinical supply chain solutions including packaging, labeling, storage, distribution, and clinical logistics management for global clinical studies.
+                    Established in 2015, Seveillar delivers compliant, reliable, and efficient clinical supply chain solutions including Blinding, labeling, packaging, storage, distribution, and clinical logistics management for global clinical studies.
                   </p>
                   <p className="text-[#28151B] text-lg leading-relaxed font-light">
                     With <span className="font-semibold text-[#E95A25]">QP-certified</span> and <span className="font-semibold text-[#E95A25]">USFDA-audited</span> infrastructure, Seveillar supports complex multi-regional clinical trials while maintaining the highest standards of quality, compliance, and operational excellence.
                   </p>
                 </div>
                 <div className="pt-4">
-                  <button className="group inline-flex items-center gap-3 text-[#E95A25] hover:text-[#4C292F] font-medium transition-colors border-b border-[#E95A25]/30 pb-1">
+                  <Link href="/about" className="group inline-flex items-center gap-3 text-[#E95A25] hover:text-[#4C292F] font-medium transition-colors border-b border-[#E95A25]/30 pb-1">
                     <span>Read the full story</span>
                     <svg className="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                     </svg>
-                  </button>
+                  </Link>
                 </div>
               </div>
 
               <div className="space-y-10">
                 {/* Light brown tint background for visual break */}
-                <div className="bg-gradient-to-br from-[#FAF7F2] to-white border border-[#FAD1C3]/30 rounded-[28px] p-8 md:p-10 shadow-sm">
-                  <div className="grid grid-cols-2 gap-8">
-                    <div>
-                      <div className="text-4xl font-light text-[#E95A25] tracking-tight">2015</div>
-                      <div className="text-[#5A3A3E] text-sm uppercase tracking-wider mt-1 font-mono">Founded</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-light text-[#E95A25] tracking-tight">50<span className="text-2xl">+</span></div>
-                      <div className="text-[#5A3A3E] text-sm uppercase tracking-wider mt-1 font-mono">Global Trials</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-light text-[#E95A25] tracking-tight">25<span className="text-2xl">+</span></div>
-                      <div className="text-[#5A3A3E] text-sm uppercase tracking-wider mt-1 font-mono">Countries</div>
-                    </div>
-                    <div>
-                      <div className="text-4xl font-light text-[#E95A25] tracking-tight">100<span className="text-2xl">%</span></div>
-                      <div className="text-[#5A3A3E] text-sm uppercase tracking-wider mt-1 font-mono">Compliance Focus</div>
-                    </div>
-                  </div>
-                </div>
+                <Image src="/images/seveillar-50.webp" alt="Seveillar clinical packaging team at work" width={900} height={600} className="w-full rounded-[28px] object-cover shadow-sm" />
                 
                 <div className="flex flex-wrap gap-3 pt-4 border-t border-[#FAD1C3]/30">
                   {certifications.map((cert, i) => (
@@ -501,9 +459,7 @@ export default function HomeClient() {
                   <div className="h-1.5 w-full bg-[#E95A25]"></div>
                   <div className="p-6 md:p-7">
                     <div className="w-12 h-12 rounded-xl bg-[#E95A25]/10 flex items-center justify-center mb-5 group-hover:bg-[#E95A25] transition-colors duration-300">
-                      <svg className="w-6 h-6 text-[#E95A25] group-hover:text-white transition-colors duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.7} d={service.icon} />
-                      </svg>
+                      {createElement(service.icon, { className: "w-6 h-6 text-[#E95A25] group-hover:text-white transition-colors duration-300", strokeWidth: 1.7 })}
                     </div>
                     <h3 className="text-xl font-bold text-[#28151B] mb-3 leading-tight">{service.title}</h3>
                     <p className="text-[#5A3A3E] text-sm leading-relaxed mb-4">{service.desc}</p>
@@ -512,12 +468,12 @@ export default function HomeClient() {
                         <span key={idx} className="text-xs bg-[#FAF7F2] text-[#4C292F] px-2 py-0.5 rounded">{point}</span>
                       ))}
                     </div>
-                    <button className="inline-flex items-center gap-2 text-sm font-medium text-[#E95A25] hover:text-[#4C292F] transition-colors group/btn">
+                    <Link href={service.href} className="inline-flex items-center gap-2 text-sm font-medium text-[#E95A25] hover:text-[#4C292F] transition-colors group/btn">
                       Learn More 
                       <svg className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
                       </svg>
-                    </button>
+                    </Link>
                   </div>
                 </motion.div>
               ))}
@@ -530,12 +486,12 @@ export default function HomeClient() {
               variants={fadeInUp}
               className="text-center mt-16 pt-4"
             >
-              <button className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-[#FAD1C3] bg-white text-[#28151B] font-semibold hover:bg-[#FAF7F2] hover:border-[#E95A25]/30 hover:text-[#E95A25] transition-all duration-300 shadow-sm">
+              <Link href="/services" className="inline-flex items-center gap-2 px-8 py-3.5 rounded-full border border-[#FAD1C3] bg-white text-[#28151B] font-semibold hover:bg-[#FAF7F2] hover:border-[#E95A25]/30 hover:text-[#E95A25] transition-all duration-300 shadow-sm">
                 <span>View All Services</span>
                 <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                 </svg>
-              </button>
+              </Link>
             </motion.div>
           </div>
         </section>
@@ -610,23 +566,20 @@ export default function HomeClient() {
             </div>
 
             <div className="w-14 h-14 rounded-2xl bg-[#E95A25] flex items-center justify-center">
-              <svg
-                className="w-7 h-7 text-white"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M17.657 16.657L13.414 20.9a2 2 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-              />
-              </svg>
+              <MapPin className="w-7 h-7 text-white" aria-hidden="true" />
             </div>
           </div>
 
           <div className="space-y-4 flex-1">
+            <div className="overflow-hidden rounded-2xl border border-white/10 bg-white/5">
+              <iframe
+                title="Map of Seveillar in Ranjangaon MIDC, Pune"
+                src="https://www.google.com/maps?q=Seveillar%20Clinical%20Supplies%20Services%20Pvt%20Ltd%20Ranjangaon%20MIDC%20Pune&output=embed"
+                loading="lazy"
+                className="pointer-events-none h-56 w-full"
+              />
+              <a href="https://www.google.com/maps/search/?api=1&query=Seveillar+Clinical+Supplies+Services+Ranjangaon+MIDC+Pune" target="_blank" rel="noopener noreferrer" className="block px-4 py-3 text-sm font-medium text-[#F1D5C8] hover:text-white">Open location map ↗</a>
+            </div>
             <div className="rounded-2xl border border-white/5 bg-white/[0.03] p-5">
               <p className="text-[#C7B7AE] leading-relaxed text-sm">
                 Located in 5 Star MIDC Industrial Zone,
@@ -636,14 +589,14 @@ export default function HomeClient() {
 
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-2xl bg-black/20 p-5">
-                <p className="text-3xl font-bold text-white">50 KM</p>
+                <p className="text-3xl font-bold text-white">47 KM</p>
                 <p className="text-[#8E7B72] text-sm mt-2">
                   Pune Airport
                 </p>
               </div>
 
               <div className="rounded-2xl bg-black/20 p-5">
-                <p className="text-3xl font-bold text-white">180 KM</p>
+                <p className="text-3xl font-bold text-white">150 KM</p>
                 <p className="text-[#8E7B72] text-sm mt-2">
                   Mumbai Airport
                 </p>
@@ -760,7 +713,7 @@ export default function HomeClient() {
               "12,000 Sq.Ft warehouse",
               "GDP & GWP compliant",
               "Restricted access control",
-              "21 CFR Part 11 monitoring"
+              "21 CFR Part 11 Compliant"
             ].map((item, index) => (
               <div
                 key={index}
@@ -817,7 +770,7 @@ export default function HomeClient() {
 
           <div className="space-y-4 flex-1">
             {[
-              "DG backup for cold rooms & critical AHU systems",
+              "DG Backup for all systems and continuous operations",
               "100% standby support for deep freezers",
               "Continuous CCTV surveillance monitoring",
               "Integrated fire alarm & sprinkler systems",
@@ -858,15 +811,22 @@ export default function HomeClient() {
               className="mb-20 px-2"
             >
               <p className="text-[#E95A25] uppercase tracking-[0.3em] text-sm font-semibold mb-4">
-                Company Journey
+                How We Work
               </p>
               <h2 className="text-4xl md:text-6xl font-bold text-[#28151B] leading-tight max-w-4xl">
-                Building Global Clinical Supply Excellence
+                From Supply Strategy to Global Delivery
               </h2>
             </motion.div>
 
             <div className="relative w-full">
               <div className="absolute top-[72px] left-0 right-0 h-[2px] bg-[#FAD1C3]" />
+              <motion.div
+                className="absolute top-[72px] left-0 right-0 h-[2px] bg-[#E95A25] origin-left"
+                initial={{ scaleX: 0 }}
+                whileInView={{ scaleX: 1 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 1.8, ease: "easeOut" }}
+              />
               
               {/* Timeline Navigation Arrows */}
               <button
@@ -897,7 +857,11 @@ export default function HomeClient() {
                     whileHover={{ y: -5 }}
                     className="relative flex-shrink-0 w-[340px] md:w-[380px] cursor-pointer"
                   >
-                    <div
+                    <motion.div
+                      initial={{ scale: 0, opacity: 0 }}
+                      whileInView={{ scale: 1, opacity: 1 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: index * 0.15 + 0.2, duration: 0.4 }}
                       className={`absolute top-[68px] left-8 w-5 h-5 rounded-full border-[3px] z-20 transition-all duration-300 ${
                         activeTimeline === index
                           ? "bg-[#E95A25] border-white scale-110 shadow-lg"
@@ -953,9 +917,6 @@ export default function HomeClient() {
                               <p className="text-[#28151B] leading-relaxed text-sm mb-5">
                                 {item.full}
                               </p>
-                              <button className="px-5 py-2.5 rounded-lg bg-[#28151B] text-white text-sm font-medium hover:bg-[#E95A25] transition-all duration-300 shadow-md hover:shadow-lg">
-                                Learn More
-                              </button>
                               <div className="absolute -top-2 left-8 w-4 h-4 bg-white border-t border-l border-[#E95A25]/20 rotate-45"></div>
                             </motion.div>
                           )}

@@ -10,11 +10,6 @@ import {
   ChevronRight,
 } from "lucide-react";
 
-import {
-  FaFacebookF,
-  FaLinkedinIn,
-  FaXTwitter,
-} from "react-icons/fa6";
 
 export default function Footer() {
   const quickLinks = [
@@ -22,7 +17,7 @@ export default function Footer() {
     { name: "About Us", href: "/about" },
     { name: "Our Services", href: "/services" },
     { name: "Facility & Infrastructure", href: "/facility" },
-    { name: "Why Us", href: "/why-us" },
+    { name: "Why Us", href: "/whyus" },
     { name: "Contact Us", href: "/contact" },
   ];
 
@@ -48,8 +43,8 @@ export default function Footer() {
     href: "/services#consultancy",
   },
   {
-    name: "Global Distribution",
-    href: "/services#distribution",
+    name: "IVRS / IWRS (IRT) Services",
+    href: "/services#irt",
   },
 ];
 
@@ -88,22 +83,6 @@ export default function Footer() {
                 for global pharmaceutical and biotechnology studies.
               </p>
 
-              {/* Social Icons */}
-              <div className="flex items-center gap-3 mt-8">
-                {[
-                  { icon: <FaFacebookF size={16} />, href: "#" },
-                  { icon: <FaXTwitter size={16} />, href: "#" },
-                  { icon: <FaLinkedinIn size={16} />, href: "#" },
-                ].map((item, index) => (
-                  <a
-                    key={index}
-                    href={item.href}
-                    className="group h-10 w-10 rounded-full border border-white/10 bg-white/[0.03] flex items-center justify-center text-[#B0B0B0] transition-all duration-300 hover:bg-[#D68B5C] hover:text-white hover:border-[#D68B5C] hover:-translate-y-0.5"
-                  >
-                    {item.icon}
-                  </a>
-                ))}
-              </div>
             </div>
 
             {/* Quick Links */}
@@ -168,7 +147,7 @@ export default function Footer() {
                   <div className="flex flex-col">
                     <p className="text-[13px] text-[#888888] uppercase tracking-wider mb-0.5">Visit Us</p>
                     <p className="text-[15px] text-[#C8C8C8] leading-relaxed">
-                      5 Star MIDC, Ranjangaon,
+                      Plot D-219, Ranjangaon MIDC,
                       <br />
                       Pune, Maharashtra, India - 412220
                     </p>
@@ -181,12 +160,8 @@ export default function Footer() {
                   </div>
                   <div className="flex flex-col">
                     <p className="text-[13px] text-[#888888] uppercase tracking-wider mb-0.5">Email Us</p>
-                    <a
-                      href="mailto:enquiry@seveillar.com"
-                      className="text-[15px] text-[#C8C8C8] hover:text-[#D68B5C] transition-colors duration-300"
-                    >
-                      enquiry@seveillar.com
-                    </a>
+                    <a href="mailto:somnath.sakore@seveillar.com" className="text-[15px] text-[#C8C8C8] hover:text-[#D68B5C] transition-colors duration-300 break-all">somnath.sakore@seveillar.com</a>
+                    <a href="mailto:malharee.sutar@seveillar.com" className="text-[15px] text-[#C8C8C8] hover:text-[#D68B5C] transition-colors duration-300 break-all">malharee.sutar@seveillar.com</a>
                   </div>
                 </div>
 
@@ -196,12 +171,8 @@ export default function Footer() {
                   </div>
                   <div className="flex flex-col">
                     <p className="text-[13px] text-[#888888] uppercase tracking-wider mb-0.5">Call Us</p>
-                    <a
-                      href="tel:+912012345678"
-                      className="text-[15px] text-[#C8C8C8] hover:text-[#D68B5C] transition-colors duration-300"
-                    >
-                      +91 20 1234 5678
-                    </a>
+                    <a href="tel:+919923129073" className="text-[15px] text-[#C8C8C8] hover:text-[#D68B5C] transition-colors duration-300">+91 99231 29073</a>
+                    <a href="tel:+919657527925" className="text-[15px] text-[#C8C8C8] hover:text-[#D68B5C] transition-colors duration-300">+91 96575 27925</a>
                   </div>
                 </div>
               </div>
@@ -216,21 +187,6 @@ export default function Footer() {
               © {new Date().getFullYear()} Seveillar Clinical Supplies Services Pvt. Ltd. All rights reserved.
             </p>
 
-            <div className="flex items-center gap-8 text-[14px]">
-              <Link
-                href="/privacy-policy"
-                className="text-[#8A8A8A] hover:text-[#D68B5C] transition-colors duration-300"
-              >
-                Privacy Policy
-              </Link>
-              <span className="text-[#8A8A8A]/30">|</span>
-              <Link
-                href="/terms"
-                className="text-[#8A8A8A] hover:text-[#D68B5C] transition-colors duration-300"
-              >
-                Terms & Conditions
-              </Link>
-            </div>
           </div>
         </div>
       </div>

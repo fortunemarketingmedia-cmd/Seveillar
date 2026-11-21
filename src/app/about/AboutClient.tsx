@@ -79,7 +79,7 @@ export default function AboutClient() {
     <>
       <Navbar />
 
-      <main className="bg-white overflow-hidden">
+      <main className="bg-white overflow-x-clip">
         
         {/* ================= HERO SECTION ================= */}
         {/* Banner (Hero) Background: #FFF5F0 (pale orange tint) per specification */}
@@ -90,12 +90,13 @@ export default function AboutClient() {
             className="absolute inset-0 bg-cover bg-center"
             style={{
               backgroundImage:
-                "url('https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1974&auto=format&fit=crop')",
+                "url('/images/seveillar-70.webp')",
             }}
             initial={{ opacity: 0.8 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 1.5, ease: [0.25, 0.25, 0, 1] }}
           />
+          <div className="absolute inset-0 bg-[#28151B]/70" />
 
           {/* Content */}
           <motion.div 
@@ -117,9 +118,9 @@ export default function AboutClient() {
               Global Clinical Supply Solutions
             </h1>
 
-            <p className="mt-6 max-w-3xl mx-auto text-gray-200 text-base md:text-lg leading-relaxed">
+            <p className="mt-6 max-w-3xl mx-auto text-white text-base md:text-lg leading-relaxed drop-shadow-md">
               Delivering reliable, compliant, and innovative clinical trial
-              supply management solutions for pharmaceutical and biotechnology
+              supply management solutions for pharmaceutical, biotechnology, and CRO
               organizations worldwide.
             </p>
           </motion.div>
@@ -193,7 +194,7 @@ export default function AboutClient() {
             >
               <div className="relative h-[500px] rounded-[2rem] overflow-hidden shadow-xl">
                 <Image
-                  src="https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?q=80&w=1974&auto=format&fit=crop"
+                  src="/images/seveillar-48.webp"
                   alt="About Seveillar"
                   fill
                   sizes="(max-width: 768px) 100vw, 50vw"
@@ -240,7 +241,7 @@ export default function AboutClient() {
                   </h3>
 
                   <p className="mt-6 text-lg leading-relaxed text-[#5A3A3E]">
-                    The identity of <span className="font-semibold text-[#28151B]">Seveillar</span> 
+                    The identity of <span className="font-semibold text-[#28151B]">Seveillar</span>{" "}
                     is rooted in purpose, compassion, and innovation. The name reflects our mission 
                     of supporting people through healthcare advancement and clinical research excellence.
                   </p>
@@ -440,7 +441,7 @@ export default function AboutClient() {
             {/* Image - OPTIMIZED: removed hover scale */}
             <div className="relative h-[500px] rounded-[2rem] overflow-hidden shadow-xl">
               <Image
-                src="https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?q=80&w=1974&auto=format&fit=crop"
+                src="/images/seveillar-73.webp"
                 alt="Global Network"
                 fill
                 sizes="(max-width: 768px) 100vw, 50vw"
@@ -485,140 +486,6 @@ export default function AboutClient() {
           </div>
         </section>
 
-        {/* ================= TEAM SECTION ================= */}
-        {/* Services Offered Background: #FFF8F5 (very pale orange) per specification */}
-        <section className="py-20 px-6 md:px-14 bg-[#FFF8F5]">
-          <div className="max-w-7xl mx-auto">
-            
-            <motion.div 
-              className="text-center max-w-3xl mx-auto"
-              variants={fadeInUp}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true, amount: 0.2 }}
-            >
-              <p className="text-[#E95A25] uppercase tracking-[0.2em] text-sm font-semibold">
-                Leadership Team
-              </p>
-
-              <h2 className="mt-4 text-4xl font-bold text-[#28151B]">
-                Our Leadership
-              </h2>
-
-              <p className="mt-6 text-[#5A3A3E] text-lg leading-relaxed">
-                Experienced professionals driving innovation, operational
-                excellence, and global clinical trial support solutions.
-              </p>
-            </motion.div>
-
-            {/* Team Cards - OPTIMIZED: reduced hover scale */}
-            <div className="grid lg:grid-cols-2 gap-10 mt-16">
-              {/* Dr Somnath */}
-              <motion.div 
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                className="bg-white rounded-[2rem] overflow-hidden border border-[#FAD1C3]/50 shadow-sm hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-[320px]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?q=80&w=1974&auto=format&fit=crop"
-                    alt="Dr Somnath Sakore"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="p-8">
-                  <h3 className="text-3xl font-bold text-[#28151B]">
-                    Dr. Somnath Sakore
-                  </h3>
-
-                  <p className="mt-2 text-[#E95A25] font-semibold">
-                    Managing Director
-                  </p>
-
-                  <p className="mt-6 text-[#5A3A3E] leading-relaxed">
-                    Dr. Somnath Sakore is a distinguished pharmaceutical
-                    professional and visionary entrepreneur with over two
-                    decades of experience in pharmaceutical and clinical
-                    research industries.
-                  </p>
-
-                    <div className="mt-6 space-y-3">
-  {[
-    "Global clinical supplies management expertise across therapeutic studies",
-    "Strong focus on quality and regulatory compliance standards worldwide",
-    "Operational excellence across international clinical research projects",
-    "Trusted leadership in pharmaceutical research and healthcare innovation",
-  ].map((point, index) => (
-    <div key={index} className="flex items-start gap-3">
-      <div className="mt-2 h-2 w-2 rounded-full bg-[#E95A25]"></div>
-      <p className="text-[#5A3A3E] leading-relaxed">
-        {point}
-      </p>
-    </div>
-  ))}
-</div>
-                </div>
-              </motion.div>
-
-              {/* Malharee */}
-              <motion.div 
-                variants={cardVariants}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-                className="bg-white rounded-[2rem] overflow-hidden border border-[#FAD1C3]/50 shadow-sm hover:shadow-xl transition-all duration-300"
-              >
-                <div className="relative h-[320px]">
-                  <Image
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?q=80&w=1974&auto=format&fit=crop"
-                    alt="Malharee Sutar"
-                    fill
-                    sizes="(max-width: 768px) 100vw, 50vw"
-                    className="object-cover"
-                  />
-                </div>
-
-                <div className="p-8">
-                  <h3 className="text-3xl font-bold text-[#28151B]">
-                    Malharee Sutar
-                  </h3>
-
-                  <p className="mt-2 text-[#E95A25] font-semibold">
-                    Director – Projects & Business Operations
-                  </p>
-
-                  <p className="mt-6 text-[#5A3A3E] leading-relaxed">
-                    Malharee Sutar is a dynamic leader with extensive
-                    experience in clinical supply chain management,
-                    pharmaceutical packaging, and global project coordination.
-                  </p>
-
-                   <div className="mt-6 space-y-3">
-  {[
-    "Clinical supply chain management for global trial operations",
-    "Global logistics and operational planning across multiple regions",
-    "Project execution and client coordination with strategic oversight",
-    "Regulatory-compliant clinical operations ensuring quality standards",
-  ].map((point, index) => (
-    <div key={index} className="flex items-start gap-3">
-      <div className="mt-2 h-2 w-2 rounded-full bg-[#E95A25]"></div>
-      <p className="text-[#5A3A3E] leading-relaxed">
-        {point}
-      </p>
-    </div>
-  ))}
-</div>
-                </div>
-              </motion.div>
-            </div>
-          </div>
-        </section>
       </main>
       <ScrollProgress />
       <Footer />

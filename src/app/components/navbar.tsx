@@ -3,7 +3,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { motion, LayoutGroup } from "framer-motion";
 
 export default function Navbar() {
@@ -11,7 +11,6 @@ export default function Navbar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const pathname = usePathname();
-  const router = useRouter();
 
   const mobileMenuRef = useRef<HTMLDivElement>(null);
   const closeButtonRef = useRef<HTMLButtonElement>(null);
@@ -67,13 +66,7 @@ export default function Navbar() {
     { name: "Our Services", href: "/services" },
     { name: "Facility & Infrastructure", href: "/facility" },
     { name: "Why Us", href: "/whyus" },
-    { name: "Contact Us", href: "/contact" },
   ];
-
-  const handleGetInTouch = () => {
-    setIsMobileMenuOpen(false);
-    router.push("/contact");
-  };
 
   const isActiveLink = (href: string) => {
     if (href === "/") {
@@ -113,7 +106,7 @@ export default function Navbar() {
           {/* ================= DESKTOP NAV ================= */}
           <LayoutGroup>
             <div
-              className={`hidden md:flex items-center gap-1 p-2 rounded-full border transition-all duration-500 backdrop-blur-2xl ${
+              className={`hidden lg:flex items-center gap-1 p-2 rounded-full border transition-all duration-500 backdrop-blur-2xl ${
                 isScrolled
                   ? "bg-white/50 border-white/20"
                   : "bg-white/5 border-white/10"
@@ -126,7 +119,7 @@ export default function Navbar() {
                   <Link
                     key={link.name}
                     href={link.href}
-                    className="relative px-5 py-2.5 rounded-full overflow-hidden"
+                    className="relative px-3 xl:px-5 py-2.5 rounded-full overflow-hidden"
                   >
                     {/* Liquid Active Pill */}
                     {active && (
@@ -167,23 +160,24 @@ export default function Navbar() {
           </LayoutGroup>
 
           {/* ================= CTA ================= */}
-          <div className="hidden md:block">
-            <button
-              onClick={handleGetInTouch}
-              className={`px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
-                isScrolled
+          <div className="hidden lg:block">
+            <Link
+              href="/contact"
+              aria-current={pathname === "/contact" ? "page" : undefined}
+              className={`inline-flex items-center justify-center px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 ${
+                isScrolled || pathname === "/contact"
                   ? "bg-[#E58A2F] text-white shadow-lg hover:bg-orange-600"
                   : "bg-white/10 backdrop-blur-sm border border-white/20 text-white hover:bg-[#E58A2F]"
               }`}
             >
-              Get In Touch
-            </button>
+              Contact Us
+            </Link>
           </div>
 
           {/* ================= MOBILE BUTTON ================= */}
           <button
             onClick={() => setIsMobileMenuOpen(true)}
-            className={`md:hidden p-2 rounded-full transition-all duration-300 ${
+            className={`lg:hidden p-2 rounded-full transition-all duration-300 ${
               isScrolled ? "text-[#0E3B5F]" : "text-white"
             }`}
             aria-label="Open menu"
@@ -227,6 +221,7 @@ export default function Navbar() {
         <button
           ref={closeButtonRef}
           onClick={() => setIsMobileMenuOpen(false)}
+          aria-label="Close menu"
           className="absolute top-6 right-6 z-20 p-3 rounded-full bg-white/10 backdrop-blur-sm text-white hover:bg-white/20 transition-all duration-300 hover:rotate-90"
         >
           <svg
@@ -276,8 +271,10 @@ export default function Navbar() {
           </div>
 
           {/* CTA */}
-          <button
-            onClick={handleGetInTouch}
+          <Link
+            href="/contact"
+            onClick={() => setIsMobileMenuOpen(false)}
+            aria-current={pathname === "/contact" ? "page" : undefined}
             className="mt-12 px-10 py-4 bg-[#E58A2F] text-white text-xl font-semibold rounded-full hover:bg-white hover:text-[#0E3B5F] transition-all duration-300 hover:scale-105 shadow-2xl"
             style={{
               animation: isMobileMenuOpen
@@ -287,8 +284,8 @@ export default function Navbar() {
               transform: "translateY(30px)",
             }}
           >
-            Get In Touch ✨
-          </button>
+            Contact Us
+          </Link>
 
           {/* Footer */}
           <p
@@ -300,7 +297,7 @@ export default function Navbar() {
               opacity: 0,
             }}
           >
-            Seveillar — Crafting Digital Excellence
+            Seveillar Clinical Supplies Services
           </p>
         </div>
       </div>
